@@ -455,3 +455,171 @@ footer {
 section {
     animation: fadeIn 1s ease-out;
 }
+
+/* Responsive cho các thiết bị di động và tablet */
+@media screen and (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Navigation responsive */
+    nav {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        /* Ẩn menu ban đầu */
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 100;
+        cursor: pointer;
+    }
+
+    .menu-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 5px 0;
+        transition: 0.4s;
+    }
+
+    /* About section responsive */
+    .about-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .about-content {
+        text-align: center;
+    }
+
+    .social-links ul {
+        justify-content: center;
+    }
+
+    /* Terminal section responsive */
+    .terminal-section {
+        height: 40vh;
+    }
+
+    .terminal {
+        width: 95%;
+    }
+
+    /* Skills section responsive */
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Projects section responsive */
+    .projects-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* Responsive cho điện thoại nhỏ */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .terminal-section {
+        height: 35vh;
+    }
+
+    .terminal {
+        width: 98%;
+    }
+
+    #contact-form {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .social-links ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project img {
+        height: 180px;
+    }
+}
+
+/* Responsive cho màn hình siêu nhỏ */
+@media screen and (max-width: 320px) {
+    body {
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    .about-image img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .terminal-section {
+        height: 30vh;
+    }
+}
+
+/* Responsive text sizing */
+html {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 13px;
+    }
+}
