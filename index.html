@@ -9,8 +9,22 @@
 
 </head>
 <body>
-    
+<nav class="mobile-nav">
+    <div class="menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <ul class="mobile-menu">
+        <li><a href="#about">About</a>>
+        <li><a href="#skills">Skills</a>>
+        <li><a href="#projects">Projects</a>>
+        <li><a href="#contact">Contact</a>>
+    </ul>
+</nav>
 <section id="typing-animation" class="terminal-section">
+    
+
     <nav>
         <ul>
             <li><a href="#about">About</a></li>
@@ -222,66 +236,63 @@
 
     <script>
        document.addEventListener('DOMContentLoaded', function () {
-           const symbol = '~SonNguyen_Everestt>&nbsp';
-           const texts = [
-               "XIN CHÀO, MÌNH LÀ SƠN (EVERESTT)",
-               "MÌNH MUỐN TRỞ THÀNH MỘT NHÀ PHÁT TRIỂN ỨNG DỤNG ĐA NỀN TẢNG",
-               "ĐM LÊ TRÍ LUÔN NHÉ"
-           ];
+            const symbol = '~SonNguyen_Everestt>&nbsp';
+            const texts = [
+                "XIN CHÀO, MÌNH LÀ SƠN (EVERESTT)",
+                "MÌNH MUỐN TRỞ THÀNH MỘT NHÀ PHÁT TRIỂN ỨNG DỤNG ĐA NỀN TẢNG",
+                "ĐM LÊ TRÍ LUÔN NHÉ"
+            ];
 
+            let currentTextIndex = 0;
+            let currentCharIndex = 0;
+            const typingContainer = document.getElementById('typing-container');
+            let currentLineElement;
+            let cursorElement;
 
-           let currentTextIndex = 0;
-           let currentCharIndex = 0;
-           const typingContainer = document.getElementById('typing-container');
-           let currentLineElement;
-           let cursorElement;
+            function typeText() {
+                if (currentTextIndex < texts.length) {
+                    const currentText = texts[currentTextIndex];
 
-           function typeText() {
-    if (currentTextIndex < texts.length) {
-        const currentText = texts[currentTextIndex];
+                    if (currentCharIndex === 0) {
+                        currentLineElement = document.createElement('div');
+                        currentLineElement.classList.add('prompt-line');
+                        currentLineElement.innerHTML = `
+                    <span class="prompt-symbol" style="font-size: 1.5rem;">${symbol}</span>
+                    <span id="current-typing" style="color: ${getTypingTextColor()}; font-weight: bold; font-size: 1.5rem;"></span>`;
 
-        if (currentCharIndex === 0) {
-            currentLineElement = document.createElement('div');
-            currentLineElement.classList.add('prompt-line');
-            currentLineElement.innerHTML = `
-  <span class="prompt-symbol" style="font-size: 1.5rem;">${symbol}</span>
-  <span id="current-typing" style="color: ${getTypingTextColor()}; font-weight: bold; font-size: 1.5rem;"></span>`;
+                        cursorElement = document.createElement('span');
+                        cursorElement.classList.add('typing-cursor');
 
+                        currentLineElement.appendChild(cursorElement);
+                        typingContainer.appendChild(currentLineElement);
+                    }
 
-            
-            cursorElement = document.createElement('span');
-            cursorElement.classList.add('typing-cursor');
-            
-            currentLineElement.appendChild(cursorElement);
-            typingContainer.appendChild(currentLineElement);
-        }
+                    const typingSpan = currentLineElement.querySelector('#current-typing');
+                    if (currentCharIndex < currentText.length) {
+                        typingSpan.textContent += currentText[currentCharIndex];
+                        currentCharIndex++;
 
-        const typingSpan = currentLineElement.querySelector('#current-typing');
-        if (currentCharIndex < currentText.length) {
-            typingSpan.textContent += currentText[currentCharIndex];
-            currentCharIndex++;
+                        setTimeout(typeText, 55);
+                    } else {
+                        if (cursorElement) {
+                            cursorElement.remove();
+                        }
+                        currentTextIndex++;
+                        currentCharIndex = 0;
 
-            setTimeout(typeText, 55); 
-        } else {
-            cursorElement.remove();
-            currentTextIndex++;
-            currentCharIndex = 0;
-
-            if (currentTextIndex < texts.length) {
-                setTimeout(typeText, 500);
+                        if (currentTextIndex < texts.length) {
+                            setTimeout(typeText, 500);
+                        }
+                    }
+                }
             }
-        }
-    }
-}
 
-function getTypingTextColor() {
-    const color = '#ffffff';
-    return color;
-}
+            function getTypingTextColor() {
+                return '#ffffff';
+            }
 
-           // Bắt đầu gõ
-           typeText();
-
+            // Bắt đầu gõ
+            typeText();
 
             // Skill Bars Animation
             function animateSkillBars() {
@@ -328,16 +339,46 @@ function getTypingTextColor() {
             if (skillsSection) {
                 observer.observe(skillsSection);
             }
-
-
-             const menuToggle = document.querySelector('.menu-toggle');
-           const navMenu = document.querySelector('nav ul');
-
-           menuToggle.addEventListener('click', function () {
-               navMenu.classList.toggle('active');
-           });
         });
 
+        document.addEventListener('DOMContentLoaded', function () {
+                // Toggle mobile menu
+                const menuToggle = document.querySelector('.menu-toggle');
+                const mobileMenu = document.querySelector('.mobile-menu');
+
+                menuToggle.addEventListener('click', function () {
+                    // Toggle active class cho menu
+                    mobileMenu.classList.toggle('active');
+
+                    // Toggle icon hamburger
+                    this.classList.toggle('open');
+
+                    // Optional: Prevent scroll when menu is open
+                    document.body.classList.toggle('no-scroll');
+                });
+
+                // Close menu when clicking outside or menu items
+                document.addEventListener('click', function (event) {
+                    if (!menuToggle.contains(event.target) &&
+                        !mobileMenu.contains(event.target)) {
+                        mobileMenu.classList.remove('active');
+                        menuToggle.classList.remove('open');
+                        document.body.classList.remove('no-scroll');
+                    }
+                });
+
+                // Close menu when a menu item is clicked
+                const mobileMenuItems = document.querySelectorAll('.mobile-menu a');
+                mobileMenuItems.forEach(item => {
+                    item.addEventListener('click', function () {
+                        mobileMenu.classList.remove('active');
+                        menuToggle.classList.remove('open');
+                        document.body.classList.remove('no-scroll');
+                    });
+                });
+            });
+
+            
     </script>
 
 </body>
