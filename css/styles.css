@@ -1,9 +1,9 @@
 /* ===== CSS Variables ===== */
 :root {
     --primary-color: #39FF14;
-    --secondary-color: #2c3e50;
-    --background-color: #d6d5d5;
-    --text-color: #333;
+    --secondary-color: #ffffff;
+    --background-color: #1c0941;
+    --text-color: #c5bcbc;
     --white: #fff;
     --black: #000;
     --font-family: 'Segoe UI', system-ui, sans-serif;
@@ -29,6 +29,38 @@ body.no-scroll {
     position: fixed;
     width: 100%;
 }
+
+.snowfall {
+    position: fixed; /* Đảm bảo phủ toàn bộ màn hình */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Bao phủ màn hình */
+    pointer-events: none; /* Không chặn tương tác */
+    overflow: hidden; /* Ẩn các hạt tuyết vượt khung */
+    z-index: 9999; /* Ưu tiên tuyết rơi trên các phần tử khác */
+}
+
+
+.snowflake {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    filter: blur(1px);
+    animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateY(-10%) translateX(0); /* Bắt đầu từ phía trên */
+    }
+    100% {
+        transform: translateY(calc(100vh + 10%)) translateX(calc(-50vw + 100vw * var(--random-x))); /* Rơi xuống dưới cùng */
+    }
+}
+
 
 .container {
     max-width: 1200px;

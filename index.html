@@ -22,6 +22,7 @@
         <li><a href="#contact">Contact</a>>
     </ul>
 </nav>
+<div class="snowfall"></div>
 <section id="typing-animation" class="terminal-section">
     
 
@@ -377,8 +378,50 @@
                         document.body.classList.remove('no-scroll');
                     });
                 });
+
+                 // Snowfall effect
+            const snowfallContainer = document.querySelector('.snowfall');
+            if (snowfallContainer) {
+                const maxSnowflakes = 500; // Số lượng tuyết tối đa cùng lúc
+                let snowflakeCount = 0;
+
+                function createSnowflake() {
+                    if (snowflakeCount >= maxSnowflakes) return; // Đảm bảo số lượng giới hạn
+
+                    const snowflake = document.createElement('div');
+                    snowflake.classList.add('snowflake');
+
+                    // Kích thước ngẫu nhiên
+                    const size = Math.random() * 5 + 5;
+                    snowflake.style.width = `${size}px`;
+                    snowflake.style.height = `${size}px`;
+
+                    // Vị trí và độ dài ngẫu nhiên
+                    const randomX = Math.random();
+                    snowflake.style.left = `${randomX * 100}vw`;
+                    snowflake.style.setProperty('--random-x', randomX);
+                    const duration = Math.random() * 5 + 5; // Thời gian rơi ngẫu nhiên (giây)
+                    snowflake.style.animationDuration = `${duration}s`;
+
+                    // Độ trong suốt ngẫu nhiên
+                    snowflake.style.opacity = Math.random();
+
+                    snowfallContainer.appendChild(snowflake);
+                    snowflakeCount++;
+
+                    // Xóa hạt tuyết sau khi nó rơi khỏi màn hình
+                    setTimeout(() => {
+                        snowflake.remove();
+                        snowflakeCount--;
+                    }, duration * 1000); // Xóa sau khi kết thúc hoạt ảnh
+                }
+
+                // Tạo hạt tuyết liên tục
+                setInterval(createSnowflake, 40); // Mỗi 100ms tạo một hạt tuyết mới
+            }
             });
 
+           
             
     </script>
 
