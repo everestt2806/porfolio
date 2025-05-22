@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ThemeToggle from "@/components/ThemeToggle";
 import ScrollToTop from "@/components/ScrollToTop";
-import CursorTrail from "@/components/CursorTrail";
 import ParticleBackground from "@/components/ParticleBackground";
 
 const inter = Inter({
@@ -29,7 +28,6 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <div className="min-h-screen bg-primary text-text-primary">
           <ParticleBackground />
-          <CursorTrail />
           <Navbar />
           <main>{children}</main>
           <Footer />
