@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
-  basePath: "/porfolio",
-  assetPrefix: "/porfolio/",
+  reactStrictMode: true,
+  swcMinify: true,
 };
 
-module.exports = nextConfig;
+module.exports = nextConfig; 
