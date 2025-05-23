@@ -6,11 +6,21 @@
   body {
     @apply bg-primary text-text-primary;
   }
+
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 0 0% 100%;
+  }
 }
 
 @layer components {
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary to-accent;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent-light;
   }
 
   .btn-gradient {
@@ -26,9 +36,13 @@
   }
 }
 
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
   --primary: #f8f9fa;
   --secondary: #3b82f6;
   --accent: #8b5cf6;
@@ -45,8 +59,6 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
     --primary: #1a1a1a;
     --secondary: #60a5fa;
     --accent: #a78bfa;

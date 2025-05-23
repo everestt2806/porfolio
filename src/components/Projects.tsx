@@ -58,15 +58,14 @@ const Projects = () => {
     );
 
     return (
-        <section id="projects" className="py-20 bg-tertiary relative overflow-hidden">
+        <section id="projects" className="py-20 bg-primary-950 relative overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 -z-10">
-                <div className="section-gradient" />
-                <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" />
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl animate-float" />
+                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent-light/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
             </div>
 
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -80,16 +79,16 @@ const Projects = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                             viewport={{ once: true }}
-                            className="text-3xl md:text-4xl font-bold mb-4"
+                            className="text-3xl md:text-4xl font-bold mb-4 text-text-primary"
                         >
-                            My <span className="gradient-text">Projects</span>
+                            My <span className="bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent">Projects</span>
                         </motion.h2>
                         <motion.div
                             initial={{ width: 0 }}
                             whileInView={{ width: '100px' }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                             viewport={{ once: true }}
-                            className="h-1 bg-secondary mx-auto"
+                            className="h-1 bg-accent mx-auto"
                         />
                     </div>
 
@@ -98,13 +97,14 @@ const Projects = () => {
                         {filters.map((filter) => (
                             <motion.button
                                 key={filter.id}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                                 onClick={() => setActiveFilter(filter.id)}
-                                className={`px-6 py-2 rounded-full font-medium transition-colors ${activeFilter === filter.id
-                                        ? 'btn-gradient'
-                                        : 'bg-primary/50 text-text-secondary hover:bg-secondary/10'
-                                    }`}
+                                className={`px-6 py-2 rounded-lg font-medium transition-all duration-300 ${
+                                    activeFilter === filter.id
+                                        ? 'bg-accent text-primary-950 shadow-soft'
+                                        : 'bg-primary-800/50 text-text-secondary hover:bg-primary-800 hover:text-text-primary'
+                                }`}
                             >
                                 {filter.label}
                             </motion.button>
@@ -121,7 +121,7 @@ const Projects = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -20 }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                                    className="group relative glass rounded-lg overflow-hidden card-hover"
+                                    className="group relative bg-primary-800/50 backdrop-blur-sm rounded-lg overflow-hidden shadow-soft hover:shadow-hover transition-all duration-300"
                                 >
                                     <div className="relative h-48">
                                         <Image
@@ -130,7 +130,7 @@ const Projects = () => {
                                             fill
                                             className="object-cover"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-primary-950/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                                             <div className="flex gap-4">
                                                 <motion.a
                                                     whileHover={{ scale: 1.1 }}
@@ -138,7 +138,7 @@ const Projects = () => {
                                                     href={project.github}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+                                                    className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center text-primary-950 hover:bg-accent-dark transition-colors duration-300"
                                                 >
                                                     <svg
                                                         className="w-5 h-5"
@@ -154,7 +154,7 @@ const Projects = () => {
                                                     href={project.demo}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center"
+                                                    className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center text-primary-950 hover:bg-accent-dark transition-colors duration-300"
                                                 >
                                                     <svg
                                                         className="w-5 h-5"
@@ -174,7 +174,7 @@ const Projects = () => {
                                         </div>
                                     </div>
                                     <div className="p-6">
-                                        <h3 className="text-xl font-bold text-secondary mb-2">
+                                        <h3 className="text-xl font-bold text-accent mb-2">
                                             {project.title}
                                         </h3>
                                         <p className="text-text-secondary mb-4">
@@ -184,7 +184,7 @@ const Projects = () => {
                                             {project.technologies.map((tech) => (
                                                 <span
                                                     key={tech}
-                                                    className="px-3 py-1 text-sm bg-secondary/10 text-secondary rounded-full"
+                                                    className="px-3 py-1 text-sm bg-accent/10 text-accent rounded-lg"
                                                 >
                                                     {tech}
                                                 </span>
@@ -207,12 +207,12 @@ const Projects = () => {
                             Want to see more of my work? Check out my GitHub profile for additional projects.
                         </p>
                         <motion.a
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                             href="https://github.com/everestt2806"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-gradient px-8 py-3 rounded-full font-medium"
+                            className="bg-accent hover:bg-accent-dark text-primary-950 px-8 py-3 rounded-lg font-medium shadow-soft hover:shadow-hover transition-all duration-300"
                         >
                             View GitHub Profile
                         </motion.a>

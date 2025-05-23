@@ -58,15 +58,14 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-tertiary relative overflow-hidden">
+    <section id="experience" className="py-20 bg-primary-950 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="section-gradient" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent-light/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -80,22 +79,22 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold mb-4"
+              className="text-3xl md:text-4xl font-bold mb-4 text-text-primary"
             >
-              Work <span className="gradient-text">Experience</span>
+              Work <span className="bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent">Experience</span>
             </motion.h2>
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: '100px' }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              className="h-1 bg-secondary mx-auto"
+              className="h-1 bg-accent mx-auto"
             />
           </div>
 
+          {/* Timeline Line */}
           <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-secondary to-accent" />
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-accent to-accent-light" />
 
             {/* Experience Cards */}
             <div className="space-y-12">
@@ -111,20 +110,20 @@ const Experience = () => {
                   }`}
                 >
                   {/* Timeline Dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-secondary border-4 border-tertiary" />
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-accent border-4 border-primary-950" />
 
                   {/* Content Card */}
                   <div className={`w-1/2 ${index % 2 === 0 ? 'pr-12' : 'pl-12'}`}>
                     <motion.div
                       whileHover={{ scale: 1.02 }}
-                      className="glass rounded-lg p-6 card-hover"
+                      className="bg-primary-800/50 backdrop-blur-sm rounded-lg p-6 shadow-soft hover:shadow-hover transition-all duration-300"
                     >
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary">
+                        <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center text-accent">
                           {exp.icon}
                         </div>
                         <div>
-                          <h3 className="text-xl font-bold text-secondary">
+                          <h3 className="text-xl font-bold text-accent">
                             {exp.title}
                           </h3>
                           <p className="text-text-secondary">{exp.company}</p>
@@ -154,7 +153,7 @@ const Experience = () => {
                         {exp.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="px-3 py-1 text-sm bg-secondary/10 text-secondary rounded-full"
+                            className="px-3 py-1 text-sm bg-accent/10 text-accent rounded-full"
                           >
                             {tech}
                           </span>
@@ -178,10 +177,10 @@ const Experience = () => {
               Looking for new opportunities to grow and make an impact.
             </p>
             <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               href="#contact"
-              className="btn-gradient px-8 py-3 rounded-full font-medium"
+              className="bg-accent hover:bg-accent-dark text-primary-950 px-8 py-3 rounded-lg font-medium shadow-soft hover:shadow-hover transition-all duration-300"
             >
               Let&apos;s Connect
             </motion.a>

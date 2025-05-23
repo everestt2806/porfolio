@@ -11,14 +11,14 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-tertiary relative overflow-hidden">
+    <section id="about" className="py-20 bg-primary-950 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent-light/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }} />
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,16 +32,16 @@ const About = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold mb-4"
+              className="text-3xl md:text-4xl font-bold mb-4 text-text-primary"
             >
-              About <span className="text-secondary">Me</span>
+              About <span className="bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent">Me</span>
             </motion.h2>
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: '100px' }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              className="h-1 bg-secondary mx-auto"
+              className="h-1 bg-accent mx-auto"
             />
           </div>
 
@@ -54,21 +54,14 @@ const About = () => {
               className="relative"
             >
               <div className="relative w-64 h-64 md:w-96 md:h-96 mx-auto">
-                <div className="absolute inset-0 bg-secondary/20 rounded-full blur-3xl" />
+                <div className="absolute inset-0 bg-accent/20 rounded-full blur-3xl" />
                 <Image
                   src="/avt.jpg"
                   alt="Profile"
                   fill
                   className="object-cover rounded-full"
                 />
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  viewport={{ once: true }}
-                  className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-secondary text-white px-6 py-2 rounded-full shadow-lg"
-                >
-                </motion.div>
+                
               </div>
             </motion.div>
 
@@ -79,12 +72,12 @@ const About = () => {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <h3 className="text-2xl font-bold text-secondary">
-                Full Stack Developer
+              <h3 className="text-2xl font-bold text-accent">
+                Software Engineer
               </h3>
               <p className="text-text-secondary leading-relaxed">
-                I am a passionate Full Stack Developer with expertise in building
-                modern web applications. With a strong foundation in both frontend
+                I am a passionate Software Engineer with expertise in building
+                modern applications. With a strong foundation in both frontend
                 and backend technologies, I create seamless user experiences and
                 robust server-side solutions.
               </p>
@@ -102,9 +95,9 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="text-center p-4 bg-primary/50 backdrop-blur-sm rounded-lg"
+                    className="text-center p-4 bg-primary-800/50 backdrop-blur-sm rounded-lg shadow-soft"
                   >
-                    <div className="text-2xl font-bold text-secondary mb-1">
+                    <div className="text-2xl font-bold text-accent mb-1">
                       {stat.value}
                     </div>
                     <div className="text-sm text-text-secondary">
@@ -114,25 +107,30 @@ const About = () => {
                 ))}
               </div>
 
-              <div className="flex flex-wrap gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="flex flex-wrap gap-4"
+              >
                 <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="/cv.pdf"
-                  download
-                  className="px-6 py-3 bg-secondary text-white rounded-full font-medium hover:bg-secondary/90 transition-colors"
-                >
-                  Download CV
-                </motion.a>
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   href="#contact"
-                  className="px-6 py-3 border-2 border-secondary text-secondary rounded-full font-medium hover:bg-secondary/10 transition-colors"
+                  className="bg-accent hover:bg-accent-dark text-primary-950 px-8 py-3 rounded-lg font-medium shadow-soft hover:shadow-hover transition-all duration-300"
                 >
-                  Contact Me
+                  Get in Touch
                 </motion.a>
-              </div>
+                <motion.a
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  href="#projects"
+                  className="px-8 py-3 rounded-lg font-medium border-2 border-accent text-accent hover:bg-accent/10 transition-all duration-300"
+                >
+                  View Projects
+                </motion.a>
+              </motion.div>
             </motion.div>
           </div>
         </motion.div>
